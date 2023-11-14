@@ -1,10 +1,14 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponseRedirect, HttpResponsePermanentRedirect
 from django.urls import reverse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 
 
 def index(request): #HttpRequest
-    return HttpResponse("The page of girls")
+    return render(request, 'girls/index.html')
+
+
+def about(request):
+    return render(request, 'girls/about.html')
 
 
 def categories(request, cat_id):
@@ -26,6 +30,8 @@ def archive(request, year):
 
 def page_not_found(request, exception):
     return HttpResponseNotFound("<h1>Page Not Found</h1>")
+
+
 
 
 
