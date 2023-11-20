@@ -2,13 +2,29 @@ from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpRespons
 from django.urls import reverse
 from django.shortcuts import redirect, render
 
+menu = ['About Page', 'Add Paper', 'Call', 'Sing In']
+
+
+class MyClass:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+
 
 def index(request): #HttpRequest
-    return render(request, 'girls/index.html')
+    date = {'title': 'Main Page',
+            'menu': menu,
+            'float': 39.23,
+            'lst': [1, 2, 'abc', True],
+            'set': {1, 2, 3, 4, 5},
+            'dict': {'key_1': 'value_1', 'key_2': 'value_2'},
+            'obj': MyClass(20, 30)
+            }
+    return render(request, 'girls/index.html', context=date)
 
 
 def about(request):
-    return render(request, 'girls/about.html')
+    return render(request, 'girls/about.html', {'title': 'About Page'})
 
 
 def categories(request, cat_id):
