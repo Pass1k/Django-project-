@@ -4,21 +4,18 @@ from django.shortcuts import redirect, render
 
 menu = ['About Page', 'Add Paper', 'Call', 'Sing In']
 
-
-class MyClass:
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
+data_db = [
+    {'id': 1, 'title': 'Satoru Gojou', 'content': '28-летний преподаватель Токийского магического колледжа. Мечтает воспитать новое поколение магов, обладающих индивидуальным мышлением и толикой безумной самобытности. Очень умный и увереный в себе мужчина, один из сильнейших магов современности. Беззаботен и никогда не относится к чему-то всерьёз, а также не отличается особым уважением к другим магам, особенно к верхушке магического мира.', 'is_published': True},
+    {'id': 2, 'title': 'Mei Mei', 'content': 'Женщина-маг первого класса. Любит деньги и обладает сомнительной моралью. Способна управлять воронами и видеть то, что видят они. Понимая, что её проклятая техника довольна слаба в бою, сосредоточилась на развитии физических способностей и боевых нав', 'is_published': True},
+    {'id': 3, 'title': 'Sukuna Ryoumen', 'content': 'Высокоранговое Проклятье', 'is_published': False},
+    {'id': 4, 'title': 'Touji Fushiguro', 'content': 'Отец Мэгуми Фусигуро. Маг, у которого нет проклятой энергии из-за небесного проклятия.', 'is_published': True},
+]
 
 
 def index(request): #HttpRequest
     date = {'title': 'Main Page',
             'menu': menu,
-            'float': 39.23,
-            'lst': [1, 2, 'abc', True],
-            'set': {1, 2, 3, 4, 5},
-            'dict': {'key_1': 'value_1', 'key_2': 'value_2'},
-            'obj': MyClass(20, 30)
+            'posts': data_db,
             }
     return render(request, 'girls/index.html', context=date)
 
